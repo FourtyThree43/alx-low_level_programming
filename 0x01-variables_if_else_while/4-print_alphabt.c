@@ -9,10 +9,11 @@ int main(void)
 {
 	char i;
 
-	do {
-		for (i = 'a'; i <= 'z'; i++)
+	for (i = 'a'; i <= 'z'; i++)
+	{
+		if (i != 'e' && i != 'q')
 			putchar(i);
-	} while (i != 'e' && i != 'q');
+	}
 	putchar('\n');
 	return (0);
 }
