@@ -12,7 +12,7 @@ int main(void)
 	do {
 		for (i = 'a'; i <= 'z'; i++)
 			putchar(i);
-	} while (i != 'q' && i != 'e');
+	} while (i != 'e' && i != 'q');
 	putchar('\n');
 	return (0);
 }
