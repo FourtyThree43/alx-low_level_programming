@@ -1,47 +1,43 @@
 /**
- * cap_string - capitalizes all words of a string.
+ * cap_string - capitalizes all words of a string
  *
- * @s: pionter to input char.
- * Return: Always 0.
- */
+ * @s: pointer to char input array
+ *
+ * Return: @s
+*/
 
 char *cap_string(char *s)
 {
-	/* Capitalize the first letter of the string */
-	if (*s >= 'a' && *s <= 'z')
-	{
-		*s = *s - 'a' + 'A';
-	}
+	int i = 0;
 
-	/* Capitalize the first letter of each subsequent word */
-	while (*s != '\0')
+	/*iterate through our array values*/
+	while (s[i] != '\0')
 	{
-		if (*s == ' ' ||
-			*s == '\t' ||
-			*s == '\n' ||
-			*s == ',' ||
-			*s == ';' ||
-			*s == '.' ||
-			*s == '!' ||
-			*s == '?' ||
-			*s == '"' ||
-			*s == '(' ||
-			*s == ')' ||
-			*s == '{' ||
-			*s == '}')
+		/*check for any lowercase letters*/
+		if (s[i] >= 97 && s[i] <= 122)
 		{
-			s++;
-			if (*s >= 'a' && *s <= 'z')
+			if (i == 0)
 			{
-				*s = *s - 'a' + 'A';
+				s[i] -= 32;
+			}
+			if (s[i - 1] == 32 ||
+			    s[i - 1] == 9 ||
+			    s[i - 1] == 10 ||
+			    s[i - 1] == 44 ||
+			    s[i - 1] == 59 ||
+			    s[i - 1] == 46 ||
+			    s[i - 1] == 33 ||
+			    s[i - 1] == 63 ||
+			    s[i - 1] == 34 ||
+			    s[i - 1] == 40 ||
+			    s[i - 1] == 41 ||
+			    s[i - 1] == 123 ||
+			    s[i - 1] == 124)
+			{
+				s[i] -= 32;
 			}
 		}
-		else
-		{
-			s++;
-		}
+		i++;
 	}
-
-	/* Return a pointer to the modified string */
 	return (s);
 }
