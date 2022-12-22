@@ -21,9 +21,10 @@ char *_strncpy(char *dest, char *src, int n)
 	}
 
 	/* pad the remaning bytes of dest with null bytes */
-	for (; i < n; i++)
+	while (i < n)
 	{
 		dest[i] = '\0';
+		i++;
 	}
 
 	/* Return a pointer to the resulting string dest */
