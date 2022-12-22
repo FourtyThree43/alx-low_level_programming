@@ -1,9 +1,7 @@
-#include "main.h"
-
 /**
   * _strncpy - copies strings.
   *
-  * @n: bytes.
+  * @n: bytes of @src.
   * @src: pointer to source input.
   * @dest: pointer to destnation input.
   *
