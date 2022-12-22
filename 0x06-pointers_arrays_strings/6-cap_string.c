@@ -4,6 +4,7 @@
  * @s: pionter to input char.
  * Return: Always 0.
  */
+
 char *cap_string(char *s)
 {
 	/* Capitalize the first letter of the string */
