@@ -10,11 +10,11 @@ char *string_toupper(char *s)
 	int i = 0;
 
 	/* Convert each lowercase letter of the string to uppercase */
-	while (*s != '\0')
+	while (s[i] != '\0')
 	{
-		if (*s >= 'a' && *s <= 'z')
+		if (s[i] >= 97 && s[i] <= 122)
 		{
-			*s = *s - 'A';
+			s[i] = s[i] - 32;
 		}
 		i++;
 	}
