@@ -7,7 +7,7 @@
  * @b: constant bytes
  * @n: pointed bytes
  *
- * Return - @s (success)
+ * Return: @s (success)
  */
 char *_memset(char *s, char b, unsigned int n)
 {
