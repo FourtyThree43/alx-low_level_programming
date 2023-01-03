@@ -11,14 +11,14 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-        /* Fill the first n bytes of the memeory area */
-        /* pointed to by s with the constant byte b */
-        unsigned int i;
+	/* Fill the first n bytes of the memeory area */
+	/* pointed to by s with the constant byte b */
+	unsigned int i;
 
-        for (i = 0; i < n; i++)
-        {
-                s[i] = b;
-        }
-        /* Return a pointer to the memeory are s */
-        return (s);
+	for (i = 0; i < n; i++)
+	{
+		s[i] = b;
+	}
+	/* Return a pointer to the memeory are s */
+	return (s);
 }
