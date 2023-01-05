@@ -10,6 +10,14 @@ while true; do
     message="Task Added"
   fi
 
+  # Get the current timestamp in seconds since the epoch
+  timestamp=$(date +%s)
+
+  # Format the timestamp as a string
+  timestamp_str=$(printf "%s" "$timestamp")
+
+  # Add the timestamp to the commit message
+  message="$message - Timestamp: $timestamp_str"
   # Add all changes to the Git staging area
   git add ./
 
