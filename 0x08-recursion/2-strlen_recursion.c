@@ -9,7 +9,7 @@
 */
 int _strlen_recursion(char *s)
 {
-	/*base case: if current character is nill terminator, return 0*/
+	/*base case: if current character is null terminator, return 0*/
 	if (*s == '\0')
 		return (0);
 
