@@ -4,8 +4,11 @@ while true; do
   # Get the commit message from the user
   echo "Enter commit message:"
   read message
-
-  # If the message is blank, use "Task Added" as the message
+	
+	#echo "Enter file name:"
+	#read fileName
+  
+	# If the message is blank, use "Task Added" as the message
   if [ -z "$message" ]; then
     message="Task Added"
   fi
@@ -20,7 +23,8 @@ while true; do
   message="$message - Timestamp: $timestamp_str"
   # Add all changes to the Git staging area
   git add ./
-
+	#git add "$fileName"
+	
   # Commit the changes with the specified message
   git commit -m "$message"
 
