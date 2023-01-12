@@ -5,10 +5,14 @@ while true; do
   echo "Enter commit message:"
   read message
 	
-	#echo "Enter file name:"
-	#read fileName
+	# Prompt the user for the name of the file to add
+  # echo "Enter the name of the file to add:"
+  # read filename
   
-	# If the message is blank, use "Task Added" as the message
+  # Check if the file exists in the current directory
+  # if ls | grep -q "$filename"; then
+	
+  # If the message is blank, use "Task Added" as the message
   if [ -z "$message" ]; then
     message="Task Added"
   fi
@@ -21,9 +25,12 @@ while true; do
 
   # Add the timestamp to the commit message
   message="$message - Timestamp: $timestamp_str"
+  
   # Add all changes to the Git staging area
   git add ./
-	#git add "$fileName"
+	
+  # Add the specified file to the Git staging area
+  # git add "$filename"
 	
   # Commit the changes with the specified message
   git commit -m "$message"
