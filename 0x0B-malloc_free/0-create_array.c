@@ -12,16 +12,25 @@
  */
 char *create_array(unsigned int size, char c)
 {
-	char *p;
+	char *_array_;
 	unsigned int i;
 
+	/* Check if size is 0, return NULL */
 	if (size == 0)
 		return (NULL);
-	p = malloc(size * sizeof(char));
-	if (p == NULL)
+
+	/* Allocate memory for the array */
+	_array_ = malloc(size * sizeof(char));
+	/* Check if malloc failed to allocate memory */
+	if (_array_ == NULL)
 		return (NULL);
+
+	/* Fill the array with the given character */
 	for (i = 0; i < size; i++)
-		p[i] = c;
-	p[i] = '\0';
-	return (p);
+		_array_[i] = c;
+	/* Add null character to the end of the array */
+	_array_[i] = '\0';
+
+	/* Return the pointer to the array */
+	return (_array_);
 }
