@@ -9,33 +9,30 @@
  */
 char *_strdup(char *str)
 {
-	int i;
 	char *dup;
+	unsigned int i, len;
 
+	i = 0;
+	len = 0;
+
+	/* Check if input string is NULL */
 	if (str == NULL)
-	{
 		return (NULL);
-	}
 
-	/* Get the length of the original string */
-	for (i = 0; str[i]; i++)
+	/* Determine the length of the input string */
+	while (str[len])
+		len++;
 
 	/* Allocate memory for the duplicate string */
-	dup = malloc((i + 1) * sizeof(char));
+	dup = malloc(sizeof(char) * (len + 1));
 
 	/* Check if malloc failed to allocate memory */
 	if (dup == NULL)
-	{
 		return (NULL);
-	}
 
-	/* Copy the original string to the duplicate string */
-	for (i = 0; str[i]; i++)
-	{
-		dup[i] = str[i];
-	}
-	/* Add null character to the end of the duplicate string */
-	dup[i] = '\0';
+	/* Copy the input string to the duplicate string */
+	while ((dup[i] = str[i]) != '\0')
+		i++;
 
 	/* Return the duplicate string */
 	return (dup);
