@@ -12,5 +12,6 @@ void free_grid(int **grid, int height);
 
 /*0x0C-more_malloc_free*/
 void *malloc_checked(unsigned int b);
+char *string_nconcat(char *s1, char *s2, unsigned int n);
 
 #endif
