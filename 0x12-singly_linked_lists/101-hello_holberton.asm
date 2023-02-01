@@ -14,7 +14,7 @@
 ; Assemble in 64-bit:   nasm -f elf64 101-hello_holberton.asm
 ;
 ;   && gcc -no-pie -std=gnu89 101-hello_holberton.o -o hello
-;       
+;
 ; run:          ./hello
 ; output is:    Hello Holberton
 ;----------------------------------------
@@ -29,12 +29,15 @@ fmt:    db "%s", 10, 0  ; The printf format, "\n",'0'
 
         global main     ; the standard gcc entry point
 main:                   ; the program label for the entry point
-        mov esi, msg    ; 64-bit ABI passing order starts w/ edi, esi, ...
-        mov edi, fmt    ;
-        mov eax, 0      ; printf is varargs, so EAX counts # of non-integer arguments being passed
-        call printf
+        push rbp        ; set up stack frame, must be alligned.
 
-        mov ebx, 0      ; normal-exit code
-        mov eax, 1      ; process-termination service
-        int 0x80        ; linux kernel service
+        mov rdi, fmt    ;
+        mov rsi, msg    ; 
+        mov rax, 0      ; printf is varargs, so EAX counts # of non-integer arguments being passed
+        call printf     ; Call C function.
+
+        pop rbp         ; restore stack
+
+        mov rax, 0      ; process-termination service
+        ret             ; return.
  ;----------------------------------------------------------------------------
