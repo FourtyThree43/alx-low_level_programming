@@ -37,5 +37,4 @@ main:                   ; the program label for the entry point
         mov ebx, 0      ; normal-exit code
         mov eax, 1      ; process-termination service
         int 0x80        ; linux kernel service
-        .section ".note.GNU-stack","",@progbits
-;----------------------------------------------------------------------------
+ ;----------------------------------------------------------------------------
