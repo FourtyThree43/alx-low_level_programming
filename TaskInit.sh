@@ -49,6 +49,7 @@ parent_folder=$(basename "$(dirname "$PWD")")
 
 # Create README.md file with parent folder name on first line and current folder name on second line
 echo "# $parent_folder" > README.md
+echo "" >> README.md
 echo "$current_folder" >> README.md
 
 # Print the output.
