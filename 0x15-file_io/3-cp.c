@@ -32,7 +32,8 @@ int main(int argc, char *argv[])
 		bytes_read = read(fd_from, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			dprintf(STDERR_FILENO, READ_ERR, argv[1]), exit(98);
-		break;
+		if (bytes_read == 0)
+			break;
 		check = bytes_read;
 
 		bytes_written = write(fd_to, buffer, bytes_read);
