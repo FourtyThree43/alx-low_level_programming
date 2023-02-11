@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 		if (bytes_read > 0)
 		{
 			bytes_written = write(fd_to, buffer, bytes_read);
-			if (bytes_written != bytes_read)
+			if (bytes_written == -1)
 				dprintf(STDERR_FILENO, WRITE_ERR, argv[2]), exit(99);
 		} else
 		break;
