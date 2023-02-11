@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 		if (bytes_read == -1)
 			dprintf(STDERR_FILENO, READ_ERR, argv[1]), exit(98);
 		check = bytes_read;
-		
+
 		bytes_written = write(fd_to, buffer, bytes_read);
 		if (bytes_written != bytes_read)
 			dprintf(STDERR_FILENO, WRITE_ERR, argv[2]), exit(99);
