@@ -10,6 +10,8 @@
 int create_file(const char *filename, char *text_content)
 {
 	int fd, write_result;
+	/*modet is a data type used to represent access permissions for files & dirs*/
+	/* used in system calls such as open(), creat(), and stat() */
 	mode_t permissions = S_IRUSR | S_IWUSR;
 
 	/* Check for a NULL filename */
