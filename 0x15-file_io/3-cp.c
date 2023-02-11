@@ -27,20 +27,16 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, WRITE_ERR, argv[2]), exit(99);
 
 	/* Read data from the source file and write to the destination file */
-	while (1)
-	{
+	do {
 		bytes_read = read(fd_from, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			dprintf(STDERR_FILENO, READ_ERR, argv[1]), exit(98);
 
-		if (bytes_read > 0)
-		{
-			bytes_written = write(fd_to, buffer, bytes_read);
-			if (bytes_written == -1)
-				dprintf(STDERR_FILENO, WRITE_ERR, argv[2]), exit(99);
-		} else
-		break;
-	}
+		bytes_written = write(fd_to, buffer, bytes_read);
+		if (bytes_written != bytes_read)
+			dprintf(STDERR_FILENO, WRITE_ERR, argv[2]), exit(99);
+	} while (bytes_read > 0);
+
 	/* Close the source file */
 	if (close(fd_from) == -1)
 		dprintf(STDERR_FILENO, CLOSE_ERR, fd_from), exit(100);
