@@ -8,7 +8,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, bytes_read, bytes_written, check = 1;
+	int fd_from, fd_to, bytes_read, bytes_written;
 	char buffer[BUFFER_SIZE];
 	mode_t permissions = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
@@ -27,20 +27,20 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, WRITE_ERR, argv[2]), exit(99);
 
 	/* Read data from the source file and write to the destination file */
-	while (check > 0)
+	while (1)
 	{
 		bytes_read = read(fd_from, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			dprintf(STDERR_FILENO, READ_ERR, argv[1]), exit(98);
-		if (bytes_read == 0)
-			break;
-		check = bytes_read;
 
-		bytes_written = write(fd_to, buffer, bytes_read);
-		if (bytes_written != bytes_read)
-			dprintf(STDERR_FILENO, WRITE_ERR, argv[2]), exit(99);
+		if (bytes_read > 0)
+		{
+			bytes_written = write(fd_to, buffer, bytes_read);
+			if (bytes_written != bytes_read)
+				dprintf(STDERR_FILENO, WRITE_ERR, argv[2]), exit(99);
+		} else
+		break;
 	}
-
 	/* Close the source file */
 	if (close(fd_from) == -1)
 		dprintf(STDERR_FILENO, CLOSE_ERR, fd_from), exit(100);
