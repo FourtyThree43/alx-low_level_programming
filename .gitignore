@@ -3,3 +3,4 @@
 *.out
 testing/
 .vscode/
+*.o
