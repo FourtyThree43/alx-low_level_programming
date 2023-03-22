@@ -10,14 +10,14 @@ int (*original_srand)(unsigned int seed);
 /* get the pointer to the original rand & srand function */
 void __attribute__((constructor)) init(void)
 {
-	printf("init function called\n");
+	//printf("init function called\n");
 	original_rand = dlsym(RTLD_NEXT, "rand");
 	original_srand = dlsym(RTLD_NEXT, "srand");
 }
 
 void srand(unsigned int seed)
 {
-	printf("Intercepted srand with seed %u\n", seed);
+	//printf("Intercepted srand with seed %u\n", seed);
 	original_srand(seed);
 }
 
@@ -31,7 +31,7 @@ int rand(void)
 	next_index = (next_index + 1) % 6;
 
 	value = number - 1;
-	printf("Intercepted rand with value %d\n", value);
+	//printf("Intercepted rand with value %d\n", value);
 
 	return value;
 }
