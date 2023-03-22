@@ -15,12 +15,14 @@ void __attribute__((constructor)) init(void)
 	original_srand = dlsym(RTLD_NEXT, "srand");
 }
 
+/* Intercept srand with the given seed */
 void srand(unsigned int seed)
 {
 	//printf("Intercepted srand with seed %u\n", seed);
 	original_srand(seed);
 }
 
+/* Intercept rand function and return winning numbers */
 int rand(void)
 {
 	int value = original_rand();
@@ -33,5 +35,5 @@ int rand(void)
 	value = number - 1;
 	//printf("Intercepted rand with value %d\n", value);
 
-	return value;
+	return (value);
 }
