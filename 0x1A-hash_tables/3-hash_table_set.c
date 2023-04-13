@@ -37,18 +37,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (new_node == NULL)
 		return (0);
 	new_node->key = strdup(key);
-	if (new_node->key == NULL)
-	{
-		free(new_node);
-		return (0);
-	}
 	new_node->value = strdup(value);
-	if (new_node->value == NULL)
+	if (new_node->key == NULL || new_node->value == NULL)
 	{
-		free(new_node->key), free(new_node);
+		free(new_node->key), free(new_node->value), free(new_node);
 		return (0);
 	}
 	new_node->next = ht->array[hash_index];
 	ht->array[hash_index] = new_node;
+
 	return (1);
 }
